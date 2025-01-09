@@ -1,1 +1,16 @@
-<p>root works!</p>
+<div class="root-wrapper">
+  <div class="root-panels-wrapper">
+    @for (tile of tiles; track tile;) {
+      <div
+        class="root-tile"
+      >
+        @if (hasText(tile)) {
+          {{tile.text}}
+        }
+        @else {
+          {{tile.path}}
+        }
+    </div>
+    }
+  </div>
+</div>

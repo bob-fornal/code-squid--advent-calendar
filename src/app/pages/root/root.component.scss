@@ -1,0 +1,27 @@
+.root-wrapper {
+  width: 100vw;
+  height: 100vh;
+
+  .root-panels-wrapper {
+    --root-pad-left: 2em;
+    --root-pad-top: 4em;
+    --root-pad-bottom: 2em;
+
+    display: flex;
+    flex-wrap: wrap;
+    position: fixed;
+    width: calc(100vw - calc(var(--root-pad-left) * 2));
+    height: calc(100vh - calc(var(--root-pad-top) + var(--root-pad-bottom)));
+    top: var(--root-pad-top);
+    left: var(--root-pad-left);
+
+    .root-tile {
+      --panel-tiles: 6;
+      box-sizing: border-box;
+      border: 1px solid rgb(245, 245, 245);
+      display: inline-block;
+      width: calc(100% / var(--panel-tiles));
+      height: calc(100% / var(--panel-tiles));
+    }  
+  }
+}
