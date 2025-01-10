@@ -1,27 +1,58 @@
+
 .root-wrapper {
   width: 100vw;
   height: 100vh;
 
-  .root-panels-wrapper {
-    --root-pad-left: 2em;
-    --root-pad-top: 4em;
-    --root-pad-bottom: 2em;
+  --root-pad-left: 2em;
+  --root-pad-top: 4em;
+  --root-pad-bottom: 2em;
 
+  --root-pad-x2: calc(var(--root-pad-left) * 2);
+
+  --tile-minimum-width: 250px;
+
+  --tile-1: calc(var(--tile-minimum-width) * 1);
+  --tile-2: calc(var(--tile-minimum-width) * 2);
+  --tile-3: calc(var(--tile-minimum-width) * 3);
+  --tile-4: calc(var(--tile-minimum-width) * 4);
+  --tile-5: calc(var(--tile-minimum-width) * 5);
+  --tile-6: calc(var(--tile-minimum-width) * 6);
+
+  --screen-minimum1: calc(var(--tile-1) + var(--root-pad-x2));
+
+  --panel-tiles: 6;
+
+  @media screen and (max-width: 314px) { // 250 + 64
+    --panel-tiles: 1;
+  }
+  @media screen and (min-width: 315px) and (max-width: 564px) { // 500 + 64
+    --panel-tiles: 2;
+  }
+  @media screen and (min-width: 565px) and  (max-width: 814px) { // 750 + 64
+    --panel-tiles: 3;
+  }
+  @media screen and (min-width: 815px) and  (max-width: 1064px) { // 1000 + 64
+    --panel-tiles: 4;
+  }
+  @media screen and (min-width: 1065px) and  (max-width: 1314px) { // 1250 + 64
+    --panel-tiles: 5;
+  }
+
+  .root-panels-wrapper {
     display: flex;
     flex-wrap: wrap;
     position: fixed;
-    width: calc(100vw - calc(var(--root-pad-left) * 2));
+    width: calc(100vw - var(--root-pad-x2));
     height: calc(100vh - calc(var(--root-pad-top) + var(--root-pad-bottom)));
     top: var(--root-pad-top);
     left: var(--root-pad-left);
 
     .root-tile {
-      --panel-tiles: 6;
       box-sizing: border-box;
       border: 1px solid rgb(245, 245, 245);
       display: inline-block;
       width: calc(100% / var(--panel-tiles));
       height: calc(100% / var(--panel-tiles));
-    }  
+    }
   }
 }
